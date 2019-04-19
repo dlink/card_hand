@@ -115,7 +115,7 @@ def best_hand(cards):
         return 'Two Pair: ' + card_order
     if pair:
         return 'Pair: ' + card_order
-    return 'High card: ' + high_card_order
+    return 'High card: ' + high_card_order2
 
 def syntax():
     print "cards <c1> <c2> <c3> <c4> <c4>"
