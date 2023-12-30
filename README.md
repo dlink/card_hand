@@ -20,3 +20,9 @@ I handed it in and my teacher said:
 "Yes, great - but now do it with less code."
 
 That stuck with me.  So, here many years later, I took a new stab at it for fun.
+
+card_hand_oo.py is an Object Oriented version.
+
+12/30/2023
+
+* Converted to python3
