@@ -41,18 +41,18 @@ def best_hand(cards):
         
     # Calc Flush
     flush = False
-    if len(suits.keys()) == 1:
+    if len(list(suits.keys())) == 1:
         flush = True
         
     # Calc Straight
     straight = False
-    if len(numbers.keys()) == 5:
-        n = sorted(numbers.keys(), key=lambda c: RANK2[c[0]])
-        if len(range(RANK2[n[0]], RANK2[n[4]]+1)) == 5:
+    if len(list(numbers.keys())) == 5:
+        n = sorted(list(numbers.keys()), key=lambda c: RANK2[c[0]])
+        if len(list(range(RANK2[n[0]], RANK2[n[4]]+1))) == 5:
             card_order = high_card_order2
             straight = True
-        n = sorted(numbers.keys(), key=lambda c: RANK[c[0]])
-        if len(range(RANK[n[0]], RANK[n[4]]+1)) == 5:
+        n = sorted(list(numbers.keys()), key=lambda c: RANK[c[0]])
+        if len(list(range(RANK[n[0]], RANK[n[4]]+1))) == 5:
             card_order = high_card_order
             straight = True
             
@@ -62,7 +62,7 @@ def best_hand(cards):
     three_set = []
     two_set = []
     one_set = []
-    for k,v in numbers.items():
+    for k,v in list(numbers.items()):
         if len(v) == 4:
             four_set.append(v)
         elif len(v) == 3:
@@ -118,7 +118,7 @@ def best_hand(cards):
     return 'High card: ' + high_card_order2
 
 def syntax():
-    print "cards <c1> <c2> <c3> <c4> <c4>"
+    print("cards <c1> <c2> <c3> <c4> <c4>")
     exit(0)
     
 # Main
@@ -146,8 +146,8 @@ if __name__ == '__main__':
             errors.append('%s: Second char must be one of %s' % (card_str,
                                                                  SUITS))
     if errors:
-        print 'Errors:'
-        print '\n'.join(errors)
+        print('Errors:')
+        print('\n'.join(errors))
         sys.exit(1)
 
-    print best_hand(cards)
+    print(best_hand(cards))

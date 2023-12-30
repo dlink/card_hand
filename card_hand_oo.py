@@ -38,18 +38,18 @@ class Hand(object):
 
         # Calc Flush
         flush = False
-        if len(suits.keys()) == 1:
+        if len(list(suits.keys())) == 1:
             flush = True
 
         # Calc Straight
         straight = False
-        if len(numbers.keys()) == 5:
-            n = sorted(numbers.keys(), key=lambda c: RANK2[c[0]])
-            if len(range(RANK2[n[0]], RANK2[n[4]]+1)) == 5:
+        if len(list(numbers.keys())) == 5:
+            n = sorted(list(numbers.keys()), key=lambda c: RANK2[c[0]])
+            if len(list(range(RANK2[n[0]], RANK2[n[4]]+1))) == 5:
                 card_order = self.high_card_order2
                 straight = True
-            n = sorted(numbers.keys(), key=lambda c: RANK[c[0]])
-            if len(range(RANK[n[0]], RANK[n[4]]+1)) == 5:
+            n = sorted(list(numbers.keys()), key=lambda c: RANK[c[0]])
+            if len(list(range(RANK[n[0]], RANK[n[4]]+1))) == 5:
                 card_order = self.high_card_order
                 straight = True
 
@@ -59,7 +59,7 @@ class Hand(object):
         three_set = []
         two_set = []
         one_set = []
-        for k,v in numbers.items():
+        for k,v in list(numbers.items()):
             if len(v) == 4:
                 four_set.append(v)
             elif len(v) == 3:
@@ -151,7 +151,7 @@ class Card(object):
     pass
 
 def syntax():
-    print "cards <c1> <c2> <c3> <c4> <c4>"
+    print("cards <c1> <c2> <c3> <c4> <c4>")
     exit(0)
     
 
@@ -159,8 +159,8 @@ if __name__ == '__main__':
     if len(sys.argv) < 2:
         syntax()
     try:
-        print Hand().bestHand(sys.argv[1:])
-    except Exception, e:
+        print(Hand().bestHand(sys.argv[1:]))
+    except Exception as e:
         raise
-        print 'Error: %s' % e
+        print('Error: %s' % e)
         
